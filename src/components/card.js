@@ -15,7 +15,7 @@ export default class Card extends React.Component {
             src="https://picsum.photos/300/200" />
           <div className="card-footer rounded-0 px-2 py-0">
             <div className="row justify-content-start">
-              <button className="btn px-0 mx-2 py-1" style={s}>
+              <button className="btn btn-block text-left px-0 mx-2 py-1" style={s}>
                 {this.props.title}</button>
             </div>
             <div className="row justify-content-end">

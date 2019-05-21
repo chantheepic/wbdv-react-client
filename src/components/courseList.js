@@ -1,4 +1,5 @@
 import React from 'react'
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import ListItem from './listItem'
 import GridIcon from '@material-ui/icons/ViewModule'
 import SortIcon from '@material-ui/icons/SortByAlpha'
@@ -28,7 +29,7 @@ export default class CourseList extends React.Component {
               </li>
               <li className="list-item col-lg-1">
                 <div className="row">
-                  <a className="btn col-6 px-0" href="#" role="button"><GridIcon /></a>
+                  <Link to="/grid"><a className="btn col-6 px-0" href="#" role="button"><GridIcon /></a></Link>
                   <a className="btn col-6 px-0" href="#" role="button"><SortIcon /></a>
                 </div>
               </li>

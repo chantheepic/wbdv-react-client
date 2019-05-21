@@ -1,4 +1,5 @@
 import React from 'react'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import MenuIcon from '@material-ui/icons/Menu'
 import CourseGrid from './courseGrid'
 import CourseList from './courseList'
@@ -21,7 +22,7 @@ export default class Whiteboard extends React.Component {
   }
 
   removeCourse = (id) => {
-    this.setState({ courses: this.state.courses.filter((course) => {return course.id !== id})})
+    this.setState({ courses: this.state.courses.filter((course) => { return course.id !== id }) })
   }
 
   newCourse = () => {
@@ -37,7 +38,7 @@ export default class Whiteboard extends React.Component {
 
   render() {
     return (
-      <div>
+      <Router>
         <nav className="navbar navbar-dark bg-primary">
           <a href="" className="navbar-brand">
             <div className="row">
@@ -50,8 +51,12 @@ export default class Whiteboard extends React.Component {
             <a className="btn btn-light my-2 my-lg-0 col-sm-auto" href="#" role="button" onClick={this.newCourse}>Add Course</a>
           </form>
         </nav>
-        <CourseGrid courses={this.state.courses} removeCourse={this.removeCourse} />
-        <CourseList courses={this.state.courses} removeCourse={this.removeCourse} />
-      </div>)
+        <Route exact path="/grid" render={props => (
+          <CourseGrid courses={this.state.courses} removeCourse={this.removeCourse} />
+        )} />
+        <Route exact path="/list" render={props => (
+          <CourseList courses={this.state.courses} removeCourse={this.removeCourse} />
+        )} />
+      </Router>)
   }
 }

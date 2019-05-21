@@ -1,4 +1,5 @@
 import React from 'react'
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import Card from './card'
 import ListIcon from '@material-ui/icons/ViewList'
 import SortIcon from '@material-ui/icons/SortByAlpha'
@@ -25,7 +26,7 @@ export default class CourseGrid extends React.Component {
               </li>
               <li className="list-item col-lg-1">
                 <div className="row">
-                  <a className="btn col-6 px-0" href="#" role="button"><ListIcon /></a>
+                  <Link to="/list"><a className="btn col-6 px-0" href="#" role="button"><ListIcon /></a></Link>
                   <a className="btn col-6 px-0" href="#" role="button"><SortIcon /></a>
                 </div>
               </li>
