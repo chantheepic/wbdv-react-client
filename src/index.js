@@ -5,13 +5,10 @@ import './index.css'
 import * as serviceWorker from './serviceWorker'
 import 'bootstrap/dist/css/bootstrap.css'
 import Whiteboard from './components/whiteboard'
-import CourseEditor from './components/courseEditor'
+// import CourseEditor from './components/courseEditor'
 
 ReactDOM.render(
-  <div>
-    <Whiteboard />
-    <CourseEditor />
-  </div>,
+  <Whiteboard />,
   document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change

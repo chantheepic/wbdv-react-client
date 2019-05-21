@@ -5,7 +5,7 @@ import CloseIcon from '@material-ui/icons/Close'
 export default class GridRibbon extends React.Component {
   render() {
     return (
-      <li className="list-group-item">
+      <a className="btn list-group-item rounded-0" href="#" role="button">
         <ul className="row list-unstyled">
           <li className="list-item col-lg-5 col-11">
             <div className="row">
@@ -19,6 +19,7 @@ export default class GridRibbon extends React.Component {
             <span className="float-right"><CloseIcon /></span>
           </li>
         </ul>
-      </li>)
+      </a>
+    )
   }
 }

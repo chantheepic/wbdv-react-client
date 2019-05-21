@@ -1,28 +1,33 @@
 import React from 'react'
 import Card from './card'
-import AppsIcon from '@material-ui/icons/Apps'
+import ListIcon from '@material-ui/icons/ViewList'
 import SortIcon from '@material-ui/icons/SortByAlpha'
 
 export default class CourseGrid extends React.Component {
+  renderGridOfCourses() {
+    let courses = this.props.courses
+      .map(function (courses) {
+        return <Card title={courses.title} key={courses.id} />
+      });
+    return courses;
+  }
+
   render() {
     return (
       <div>
         <nav className="bg-light d-none d-lg-block">
           <div className="container">
             <ul className="row list-group list-group-horizontal-lg list-unstyled">
-              <li className="list-item col-lg-5">
+              <li className="list-item col-lg-6">
                 <a className="btn" href="#" role="button">Recent Documents</a>
               </li>
-              <li className="list-item col-lg-3">
+              <li className="list-item col-lg-5">
                 <a className="btn" href="#" role="button">Owned By me</a>
-              </li>
-              <li className="list-item col-lg-3">
-                <a className="btn" href="#" role="button">Last Modified By</a>
               </li>
               <li className="list-item col-lg-1">
                 <div className="row">
-                  <AppsIcon />
-                  <SortIcon />
+                  <a className="btn col-6" href="#" role="button"><ListIcon /></a>
+                  <a className="btn col-6" href="#" role="button"><SortIcon /></a>
                 </div>
               </li>
             </ul>
@@ -31,15 +36,9 @@ export default class CourseGrid extends React.Component {
 
         <div className='container-fluid'>
           <div className='card-deck row'>
-            <Card title='Title 1' />
-            <Card title='title 2' />
-            <Card title='title 3' />
-            <Card title='title 4' />
-            <Card title='title 5' />
-            <Card title='title 6' />
-            <Card title='title 7' />
-            <Card title='title 8' />
+            {this.renderGridOfCourses()}
           </div>
+
         </div>
       </div>
     )

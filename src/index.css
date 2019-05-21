@@ -11,3 +11,12 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+/* .btn:focus {
+  box-shadow: none !important;
+  background-color: rgba(200,200,200,0.2);
+}
+
+.btn:hover {
+  background-color: rgba(200,200,200,0.1);
+} */
