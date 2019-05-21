@@ -4,10 +4,9 @@ import GridIcon from '@material-ui/icons/ViewModule'
 import SortIcon from '@material-ui/icons/SortByAlpha'
 
 export default class CourseList extends React.Component {
-  renderListOfCourses() {
-    let courses = this.props.courses
-      .map(function (courses) {
-        return <ListItem title={courses.title} key={courses.id} />
+  renderListOfCourses = () => {
+    let courses = this.props.courses.map((courses) => {
+        return <ListItem title={courses.title} id={courses.id} removeCourse={this.props.removeCourse}/>
       });
     return courses;
   }
@@ -29,8 +28,8 @@ export default class CourseList extends React.Component {
               </li>
               <li className="list-item col-lg-1">
                 <div className="row">
-                  <a className="btn col-6" href="#" role="button"><GridIcon /></a>
-                  <a className="btn col-6" href="#" role="button"><SortIcon /></a>
+                  <a className="btn col-6 px-0" href="#" role="button"><GridIcon /></a>
+                  <a className="btn col-6 px-0" href="#" role="button"><SortIcon /></a>
                 </div>
               </li>
             </ul>
@@ -46,8 +45,6 @@ export default class CourseList extends React.Component {
           <ul className="list-group" id="courselist">
             <hr className="my-2" />
             <h5>7 Days</h5>
-            <ListItem title='Title 1' />
-            <ListItem title='Title 1' />
           </ul>
         </div>
       </div>

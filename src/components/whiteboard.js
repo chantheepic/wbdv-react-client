@@ -2,6 +2,7 @@ import React from 'react'
 import MenuIcon from '@material-ui/icons/Menu'
 import CourseGrid from './courseGrid'
 import CourseList from './courseList'
+import uuid from 'uuid'
 
 export default class Whiteboard extends React.Component {
   constructor() {
@@ -19,16 +20,20 @@ export default class Whiteboard extends React.Component {
     };
   }
 
-  newCourse = (e) => {
-    if(this.state.title == ""){
-      this.state.courses.push({title: 'Untitled Course', id:333});
-    } else {
-      this.state.courses.push({title: this.state.title, id:333});
-    }
-    this.setState({title:''});
+  removeCourse = (id) => {
+    this.setState({ courses: this.state.courses.filter((course) => {return course.id !== id})})
   }
 
-  newCourseTitle = (e) => this.setState({title: e.target.value});
+  newCourse = () => {
+    if (this.state.title === "") {
+      this.state.courses.push({ title: 'Untitled Course', id: uuid.v4() });
+    } else {
+      this.state.courses.push({ title: this.state.title, id: uuid.v4() });
+    }
+    this.setState({ title: '' });
+  }
+
+  newCourseTitle = (e) => this.setState({ title: e.target.value });
 
   render() {
     return (
@@ -45,8 +50,8 @@ export default class Whiteboard extends React.Component {
             <a className="btn btn-light my-2 my-lg-0 col-sm-auto" href="#" role="button" onClick={this.newCourse}>Add Course</a>
           </form>
         </nav>
-        <CourseGrid courses={this.state.courses} />
-        <CourseList courses={this.state.courses} />
+        <CourseGrid courses={this.state.courses} removeCourse={this.removeCourse} />
+        <CourseList courses={this.state.courses} removeCourse={this.removeCourse} />
       </div>)
   }
 }
