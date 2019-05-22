@@ -1,28 +1,19 @@
 import React from 'react'
+import LessonTab from './lessonTab'
 import AddIcon from '@material-ui/icons/Add'
 
 export default class LessonTabs extends React.Component {
+  renderListOfLessons = () => {
+    let course = this.props.course.map((lesson) => {
+      return <LessonTab title={lesson.title} selectLesson={this.props.selectLesson} />
+    });
+    return course;
+  }
+
   render() {
     return (
       <ul className="nav nav-pills nav-fill">
-        <li className="nav-item">
-          <a className="nav-link rounded-0 text-white active" href="#">Build</a>
-        </li>
-        <li className="nav-item">
-          <a className="nav-link rounded-0 text-white" href="#">Pages</a>
-        </li>
-        <li className="nav-item">
-          <a className="nav-link rounded-0 text-white" href="#">Theme</a>
-        </li>
-        <li className="nav-item">
-          <a className="nav-link rounded-0 text-white" href="#">Store</a>
-        </li>
-        <li className="nav-item">
-          <a className="nav-link rounded-0 text-white" href="#">Apps</a>
-        </li>
-        <li className="nav-item">
-          <a className="nav-link rounded-0 text-white" href="#">Settings</a>
-        </li>
+        {this.renderListOfLessons()}
         <li className="nav-item">
           <a className="nav-link rounded-0 text-white" href="#"><AddIcon /></a>
         </li>
@@ -30,3 +21,5 @@ export default class LessonTabs extends React.Component {
     )
   }
 }
+
+// title={course.title} id={course.id} removeCourse={this.props.removeCourse}

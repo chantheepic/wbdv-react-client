@@ -17,7 +17,7 @@ export default class ListItem extends React.Component {
           <li className="list-item col-lg-5 col-10">
             <div className="row">
               <div className="mr-3"><DocIcon /></div>
-              <Link to={{ pathname: `/courseeditor/${this.props.id}`, state: { courseId: this.props.id } }} className="btn col-10 p-0 text-left" style={overflow}>{this.props.title}</Link>
+              <Link to= {`/courseeditor/?id=${this.props.id}`} className="btn col-10 p-0 text-left" style={overflow}>{this.props.title}</Link>
             </div>
           </li>
           <li className="list-item col-lg-3 d-none d-lg-block">me</li>

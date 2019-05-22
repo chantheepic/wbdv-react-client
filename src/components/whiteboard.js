@@ -42,7 +42,7 @@ export default class Whiteboard extends React.Component {
                 <h5 className="col-10 d-none d-md-block">Course Manager</h5>
               </div>
             </a>
-            <form className="form-inline">  
+            <form className="form-inline">
               <input className="form-control mr-lg-2 col-auto" type="text" placeholder="New Course Title" value={this.state.title} onChange={(e) => this.setState({ title: e.target.value })} />
               <a className="btn btn-light my-2 my-lg-0 col-sm-auto" href="#" role="button" onClick={this.newCourse}>Add Course</a>
             </form>
@@ -54,10 +54,9 @@ export default class Whiteboard extends React.Component {
         <Route exact path="/courselist" render={props => (
           <CourseList courses={this.state.courses} removeCourse={this.removeCourse} />
         )} />
-        <Route path="/courseeditor" render={props => (
-          this.courseId = props.location.state.courseId,
-          <CourseEditor course={this.courseService.findCourseById(this.courseId)}/>
-        )} />
+        <Route path="/courseeditor" component={CourseEditor} />
       </Router>)
   }
 }
+
+// this.courseService.findCourseById(this.courseId)

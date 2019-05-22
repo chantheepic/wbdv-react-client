@@ -17,7 +17,7 @@ export default class Card extends React.Component {
             src="https://picsum.photos/300/200" />
           <div className="card-footer rounded-0 px-2 py-0">
             <div className="row justify-content-start">
-              <Link to={{ pathname: `/courseeditor/${this.props.id}`, state: { courseId: this.props.id } }} className="btn btn-block text-left px-0 mx-2 py-1" style={overflow}>
+              <Link to={`/courseeditor/?id=${this.props.id}`} className="btn btn-block text-left px-0 mx-2 py-1" style={overflow}>
                 {this.props.title}</Link>
             </div>
             <div className="row justify-content-end">
