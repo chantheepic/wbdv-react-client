@@ -1,12 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { BrowserRouter as Router } from 'react-router-dom'
 import './index.css'
 
 import * as serviceWorker from './serviceWorker'
 import 'bootstrap/dist/css/bootstrap.css'
 import Whiteboard from './components/whiteboard'
-// import CourseEditor from './components/courseEditor'
 
 ReactDOM.render(
   <Whiteboard />,

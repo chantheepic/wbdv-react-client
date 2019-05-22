@@ -26,7 +26,7 @@ export default class CourseGrid extends React.Component {
               </li>
               <li className="list-item col-lg-1">
                 <div className="row">
-                  <Link to="/list"><a className="btn col-6 px-0" href="#" role="button"><ListIcon /></a></Link>
+                  <Link to="/courselist" className="btn col-6 px-0" href="#" role="button"><ListIcon /></Link>
                   <a className="btn col-6 px-0" href="#" role="button"><SortIcon /></a>
                 </div>
               </li>

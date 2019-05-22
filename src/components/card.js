@@ -1,9 +1,11 @@
 import React from 'react'
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import CloseIcon from '@material-ui/icons/Close'
 
-const s = {
+const overflow = {
   whiteSpace: 'nowrap',
-  overflow: 'hidden'
+  overflow: 'hidden',
+  textOverflow: 'ellipses'
 };
 
 export default class Card extends React.Component {
@@ -15,11 +17,11 @@ export default class Card extends React.Component {
             src="https://picsum.photos/300/200" />
           <div className="card-footer rounded-0 px-2 py-0">
             <div className="row justify-content-start">
-              <button className="btn btn-block text-left px-0 mx-2 py-1" style={s}>
-                {this.props.title}</button>
+              <Link to={{ pathname: `/courseeditor/${this.props.id}`, state: { courseId: this.props.id } }} className="btn btn-block text-left px-0 mx-2 py-1" style={overflow}>
+                {this.props.title}</Link>
             </div>
             <div className="row justify-content-end">
-              <button className="btn px-0 mx-2 py-0" onClick={this.props.removeCourse.bind(this, this.props.id)}><CloseIcon /></button>
+              <Link to="/courselist" className="btn px-0 mx-2 py-0" onClick={this.props.removeCourse.bind(this, this.props.id)}><CloseIcon /></Link>
             </div>
           </div>
         </div>

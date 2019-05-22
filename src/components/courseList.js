@@ -29,7 +29,7 @@ export default class CourseList extends React.Component {
               </li>
               <li className="list-item col-lg-1">
                 <div className="row">
-                  <Link to="/grid"><a className="btn col-6 px-0" href="#" role="button"><GridIcon /></a></Link>
+                  <Link to="/courselist/grid" className="btn col-6 px-0" href="#" role="button"><GridIcon /></Link>
                   <a className="btn col-6 px-0" href="#" role="button"><SortIcon /></a>
                 </div>
               </li>
