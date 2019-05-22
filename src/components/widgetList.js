@@ -2,6 +2,15 @@ import React from 'react'
 import Widget from './widget'
 
 export default class WidgetList extends React.Component {
+  renderWidgets = () => {
+    if (this.props.widgets !== '') {
+      let widgets = this.props.widgets.map((widget) => {
+        return <Widget title={widget.title} id={widget.id} />
+      });
+      return widgets;
+    }
+  }
+
   render() {
     return (
       <div>
@@ -15,10 +24,7 @@ export default class WidgetList extends React.Component {
             </li>
           </ul>
         </div>
-
-        <Widget />
-        <Widget />
-        <Widget />
+        {this.renderWidgets()}
       </div>
     )
   }

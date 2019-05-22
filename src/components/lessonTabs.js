@@ -21,7 +21,7 @@ export default class LessonTabs extends React.Component {
           <button className="nav-link rounded-0 text-white btn px-2" href="#" onClick={this.props.addLesson}><AddIcon /></button>
         </li>
         <li className="nav-item">
-          <button className="nav-link rounded-0 text-white btn px-2" href="#" onClick={this.props.addLesson}><CloseIcon /></button>
+          <button className="nav-link rounded-0 text-white btn px-2" href="#" onClick={this.props.removeLesson}><CloseIcon /></button>
         </li>
       </ul>
     )

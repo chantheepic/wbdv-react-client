@@ -87,31 +87,77 @@ export default class CourseEditor extends React.Component {
         return module.id !== this.state.selectedModule[0].id
       });
       this.setState({ course: d });
+      this.setState({ selectedModule: '' });
+      this.setState({ selectedLesson: '' });
+      this.setState({ selectedTopic: '' });
     }
   }
-  
+
+  removeLesson = () => {
+    if (this.state.selectedLesson !== '') {
+      let d = this.state.selectedModule
+      d[0].lessons = d[0].lessons.filter((lesson) => {
+        return lesson.id !== this.state.selectedLesson[0].id
+      });
+      this.setState({ selectedModule: d });
+      this.setState({ selectedLesson: '' });
+      this.setState({ selectedTopic: '' });
+    }
+  }
+
+  removeTopic = () => {
+    if (this.state.selectedTopic !== '') {
+      let d = this.state.selectedLesson
+      d[0].topics = d[0].topics.filter((topic) => {
+        return topic.id !== this.state.selectedTopic[0].id
+      });
+      this.setState({ selectedLesson: d });
+      this.setState({ selectedTopic: '' });
+    }
+  }
+
 
   renderModules = () => {
     if (this.state.course !== '') {
-      return <ModuleList modules={this.state.course[0].modules} selectModule={this.selectModule} removeModule={this.removeModule} addModule={this.addModule} />
+      return <ModuleList
+        modules={this.state.course[0].modules}
+        selectModule={this.selectModule}
+        removeModule={this.removeModule}
+        addModule={this.addModule} />
     } else {
-      return <ModuleList modules={''} selectModule={this.selectModule} removeModule={this.removeModule} />
+      return <ModuleList modules={''} />
     }
   }
 
   renderLessons = () => {
     if (this.state.selectedModule !== '') {
-      return <LessonTabs lessons={this.state.selectedModule[0].lessons} selectLesson={this.selectLesson} addLesson={this.addLesson} />
+      return <LessonTabs
+        lessons={this.state.selectedModule[0].lessons}
+        selectLesson={this.selectLesson}
+        removeLesson={this.removeLesson}
+        addLesson={this.addLesson} />
     } else {
-      return <LessonTabs lessons={''} selectLesson={this.selectLesson} />
+      return <LessonTabs lessons={''} />
     }
   }
 
   renderTopics = () => {
     if (this.state.selectedLesson !== '') {
-      return <TopicPills topics={this.state.selectedLesson[0].topics} selectTopic={this.selectTopic} addTopic={this.addTopic} />
+      return <TopicPills
+        topics={this.state.selectedLesson[0].topics}
+        selectTopic={this.selectTopic}
+        removeTopic={this.removeTopic}
+        addTopic={this.addTopic} />
     } else {
-      return <TopicPills topics={''} selectTopic={this.selectTopic} />
+      return <TopicPills topics={''} />
+    }
+  }
+
+  renderWidgets = () => {
+    if (this.state.selectedTopic !== '') {
+      return <WidgetList widgets={this.state.selectedTopic[0].widgets}/>
+    } else {
+      return <WidgetList widgets={''} />
     }
   }
 
@@ -135,7 +181,7 @@ export default class CourseEditor extends React.Component {
             <div className="row">
               {this.renderTopics()}
             </div>
-            <WidgetList />
+            {this.renderWidgets()}
           </div>
         </nav>
       </div>

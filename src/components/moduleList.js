@@ -3,6 +3,10 @@ import Module from './module'
 import AddIcon from '@material-ui/icons/Add'
 import CloseIcon from '@material-ui/icons/Close'
 
+const fullHeight = {
+  minHeight: '95vh'
+};
+
 export default class ModuleList extends React.Component {
   renderModules = () => {
     let modules = this.props.modules.map((module) => {
@@ -13,7 +17,7 @@ export default class ModuleList extends React.Component {
 
   render() {
     return (
-      <ul className="list-group col-3 bg-dark">
+      <ul className="list-group col-3 bg-dark" style={fullHeight}>
         <hr className="my-2" />
         {this.renderModules()}
         <li className="list-group-item m-1 rounded bg-dark text-white p-2 border-0">

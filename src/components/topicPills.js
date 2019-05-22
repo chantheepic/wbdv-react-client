@@ -22,7 +22,7 @@ export default class TopicPills extends React.Component {
           <button class="m-1 p-2 bg-secondary text-white rounded-0 btn" onClick={this.props.addTopic}><AddIcon /></button>
         </li>
         <li class="nav-item">
-          <button class="m-1 p-2 bg-secondary text-white rounded-0 btn" onClick={this.props.addTopic}><CloseIcon /></button>
+          <button class="m-1 p-2 bg-secondary text-white rounded-0 btn" onClick={this.props.removeTopic}><CloseIcon /></button>
         </li>
       </ul>
     )
