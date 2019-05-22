@@ -2,8 +2,16 @@ import React from 'react'
 import TopicPill from './topicPill'
 import AddIcon from '@material-ui/icons/Add'
 import CloseIcon from '@material-ui/icons/Close'
+import UpdateIcon from '@material-ui/icons/Done'
 
 export default class TopicPills extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      title: ''
+    };
+  }
+
   renderTopics = () => {
     if (this.props.topics !== '') {
       let topics = this.props.topics.map((topic) => {
@@ -13,16 +21,21 @@ export default class TopicPills extends React.Component {
     }
   }
 
-
   render() {
     return (
       <ul class="nav nav-pills">
         {this.renderTopics()}
-        <li class="nav-item">
-          <button class="m-1 p-2 bg-secondary text-white rounded-0 btn" onClick={this.props.addTopic}><AddIcon /></button>
+        <li className="nav-item">
+          <button className="m-1 p-2 bg-secondary text-white rounded-0 btn" onClick={this.props.addTopic}><AddIcon /></button>
         </li>
-        <li class="nav-item">
-          <button class="m-1 p-2 bg-secondary text-white rounded-0 btn" onClick={this.props.removeTopic}><CloseIcon /></button>
+        <li className="nav-item">
+          <button className="m-1 p-2 bg-secondary text-white rounded-0 btn" onClick={this.props.removeTopic}><CloseIcon /></button>
+        </li>
+        <li className="nav-item">
+          <input type="text" className="m-2 p-2 form-control rounded-0" placeholder="Topic Name" value={this.state.title} onChange={(e) => this.setState({ title: e.target.value })} />
+        </li>
+        <li className="nav-item">
+          <button className="m-1 p-2 bg-secondary text-white rounded-0 btn" onClick={this.props.updateTopic.bind(this, this.state.title)}><UpdateIcon /></button>
         </li>
       </ul>
     )

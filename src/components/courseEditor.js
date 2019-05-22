@@ -57,7 +57,7 @@ export default class CourseEditor extends React.Component {
   }
 
   addModule = () => {
-    let d = this.state.course
+    let d = this.state.course;
     d[0].modules.push({ id: uuid.v4(), title: 'Untitled Module', lessons: [] })
     this.setState({ course: d });
     // let courseService = CourseService.getInstance();
@@ -65,7 +65,7 @@ export default class CourseEditor extends React.Component {
   }
 
   addLesson = () => {
-    let d = this.state.selectedModule
+    let d = this.state.selectedModule;
     d[0].lessons.push({ id: uuid.v4(), title: 'Untitled Lesson', topics: [] })
     this.setState({ selectedModule: d });
     // let courseService = CourseService.getInstance();
@@ -73,7 +73,7 @@ export default class CourseEditor extends React.Component {
   }
 
   addTopic = () => {
-    let d = this.state.selectedLesson
+    let d = this.state.selectedLesson;
     d[0].topics.push({ id: uuid.v4(), title: 'Untitled Topic', topics: [] })
     this.setState({ selectedLesson: d });
     // let courseService = CourseService.getInstance();
@@ -82,7 +82,7 @@ export default class CourseEditor extends React.Component {
 
   removeModule = () => {
     if (this.state.selectedModule !== '') {
-      let d = this.state.course
+      let d = this.state.course;
       d[0].modules = d[0].modules.filter((module) => {
         return module.id !== this.state.selectedModule[0].id
       });
@@ -95,7 +95,7 @@ export default class CourseEditor extends React.Component {
 
   removeLesson = () => {
     if (this.state.selectedLesson !== '') {
-      let d = this.state.selectedModule
+      let d = this.state.selectedModule;
       d[0].lessons = d[0].lessons.filter((lesson) => {
         return lesson.id !== this.state.selectedLesson[0].id
       });
@@ -107,7 +107,7 @@ export default class CourseEditor extends React.Component {
 
   removeTopic = () => {
     if (this.state.selectedTopic !== '') {
-      let d = this.state.selectedLesson
+      let d = this.state.selectedLesson;
       d[0].topics = d[0].topics.filter((topic) => {
         return topic.id !== this.state.selectedTopic[0].id
       });
@@ -116,6 +116,29 @@ export default class CourseEditor extends React.Component {
     }
   }
 
+  updateModule = (title) => {
+    if (this.state.selectedModule !== '') {
+      let d = this.state.selectedModule;
+      d[0].title = title;
+      this.setState({ selectedModule: d });
+    }
+  }
+
+  updateLesson = (title) => {
+    if (this.state.selectedLesson !== '') {
+      let d = this.state.selectedLesson;
+      d[0].title = title;
+      this.setState({ selectedLesson: d });
+    }
+  }
+
+  updateTopic = (title) => {
+    if (this.state.selectedTopic !== '') {
+      let d = this.state.selectedTopic;
+      d[0].title = title;
+      this.setState({ selectedTopic: d });
+    }
+  }
 
   renderModules = () => {
     if (this.state.course !== '') {
@@ -123,9 +146,10 @@ export default class CourseEditor extends React.Component {
         modules={this.state.course[0].modules}
         selectModule={this.selectModule}
         removeModule={this.removeModule}
-        addModule={this.addModule} />
+        addModule={this.addModule}
+        updateModule={this.updateModule} />
     } else {
-      return <ModuleList modules={''} />
+      return <ModuleList modules={''} updateModule={this.updateModule} />
     }
   }
 
@@ -135,9 +159,10 @@ export default class CourseEditor extends React.Component {
         lessons={this.state.selectedModule[0].lessons}
         selectLesson={this.selectLesson}
         removeLesson={this.removeLesson}
-        addLesson={this.addLesson} />
+        addLesson={this.addLesson}
+        updateLesson={this.updateLesson} />
     } else {
-      return <LessonTabs lessons={''} />
+      return <LessonTabs lessons={''} updateLesson={this.updateLesson} />
     }
   }
 
@@ -147,15 +172,16 @@ export default class CourseEditor extends React.Component {
         topics={this.state.selectedLesson[0].topics}
         selectTopic={this.selectTopic}
         removeTopic={this.removeTopic}
-        addTopic={this.addTopic} />
+        addTopic={this.addTopic}
+        updateTopic={this.updateTopic} />
     } else {
-      return <TopicPills topics={''} />
+      return <TopicPills topics={''} updateTopic={this.updateTopic} />
     }
   }
 
   renderWidgets = () => {
     if (this.state.selectedTopic !== '') {
-      return <WidgetList widgets={this.state.selectedTopic[0].widgets}/>
+      return <WidgetList widgets={this.state.selectedTopic[0].widgets} />
     } else {
       return <WidgetList widgets={''} />
     }
@@ -168,9 +194,9 @@ export default class CourseEditor extends React.Component {
         <nav className="navbar navbar-dark bg-dark">
           <div className="container-fluid justify-content-start">
             <Link to="/courselist" className="p-0 mr-3 btn text-white"><CloseIcon /></Link>
-            <a href="" className="navbar-brand">
+            <Link to="/courselist" className="text-white btn">
               <h5 className="m-0 d-none d-md-block">{this.state.title}</h5>
-            </a>
+            </Link>
             {this.renderLessons()}
           </div>
         </nav>
