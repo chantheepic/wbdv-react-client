@@ -24,9 +24,9 @@ export default class Whiteboard extends React.Component {
 
   newCourse = () => {
     if (this.state.title === "") {
-      this.courseService.createCourse({ title: 'Untitled Course', id: uuid.v4() });
+      this.courseService.createCourse({ id: uuid.v4(), title: 'Untitled Course', modules: [] });
     } else {
-      this.courseService.createCourse({ title: this.state.title, id: uuid.v4() });
+      this.courseService.createCourse({ id: uuid.v4(), title: this.state.title, modules: [] });
     }
     this.setState({ title: '' });
   }

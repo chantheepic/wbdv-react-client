@@ -6,6 +6,7 @@ import TopicPills from './topicPills'
 import LessonTabs from './lessonTabs'
 import WidgetList from './widgetList'
 import CloseIcon from '@material-ui/icons/Close'
+import uuid from 'uuid'
 
 export default class CourseEditor extends React.Component {
   constructor() {
@@ -14,9 +15,9 @@ export default class CourseEditor extends React.Component {
     this.state = {
       id: '',
       title: '',
-      course: [],
-      selectedLesson: '',
+      course: '',
       selectedModule: '',
+      selectedLesson: '',
       selectedTopic: '',
     };
   }
@@ -27,16 +28,91 @@ export default class CourseEditor extends React.Component {
     let courseService = CourseService.getInstance();
     let givenCourse = courseService.findCourseById(givenID);
     this.setState({ id: givenID });
-    this.setState({ course: givenCourse[0].modules });
+    this.setState({ course: givenCourse });
     this.setState({ title: givenCourse[0].title });
   }
 
-  selectLesson = (lesson) => {
-    this.setState({selectedLesson: lesson});
+  selectModule = (moduleId) => {
+    let md = this.state.course[0].modules.filter((module) => {
+      return module.id === moduleId
+    });
+    this.setState({ selectedModule: md });
+    this.setState({ selectedLesson: '' });
+    this.setState({ selectedTopic: '' });
   }
 
-  getTopics = (lesson) => {
-    // let topics = this.state.course.filter(() => )
+  selectLesson = (lessonId) => {
+    let l = this.state.selectedModule[0].lessons.filter((lesson) => {
+      return lesson.id === lessonId
+    })
+    this.setState({ selectedLesson: l });
+    this.setState({ selectedTopic: '' });
+  }
+
+  selectTopic = (topicId) => {
+    let t = this.state.selectedLesson[0].topics.filter((topic) => {
+      return topic.id === topicId
+    })
+    this.setState({ selectedTopic: t });
+  }
+
+  addModule = () => {
+    let d = this.state.course
+    d[0].modules.push({ id: uuid.v4(), title: 'Untitled Module', lessons: [] })
+    this.setState({ course: d });
+    // let courseService = CourseService.getInstance();
+    // console.log(courseService.findAllCourses())
+  }
+
+  addLesson = () => {
+    let d = this.state.selectedModule
+    d[0].lessons.push({ id: uuid.v4(), title: 'Untitled Lesson', topics: [] })
+    this.setState({ selectedModule: d });
+    // let courseService = CourseService.getInstance();
+    // console.log(courseService.findAllCourses())
+  }
+
+  addTopic = () => {
+    let d = this.state.selectedLesson
+    d[0].topics.push({ id: uuid.v4(), title: 'Untitled Topic', topics: [] })
+    this.setState({ selectedLesson: d });
+    // let courseService = CourseService.getInstance();
+    // console.log(courseService.findAllCourses())
+  }
+
+  removeModule = () => {
+    if (this.state.selectedModule !== '') {
+      let d = this.state.course
+      d[0].modules = d[0].modules.filter((module) => {
+        return module.id !== this.state.selectedModule[0].id
+      });
+      this.setState({ course: d });
+    }
+  }
+  
+
+  renderModules = () => {
+    if (this.state.course !== '') {
+      return <ModuleList modules={this.state.course[0].modules} selectModule={this.selectModule} removeModule={this.removeModule} addModule={this.addModule} />
+    } else {
+      return <ModuleList modules={''} selectModule={this.selectModule} removeModule={this.removeModule} />
+    }
+  }
+
+  renderLessons = () => {
+    if (this.state.selectedModule !== '') {
+      return <LessonTabs lessons={this.state.selectedModule[0].lessons} selectLesson={this.selectLesson} addLesson={this.addLesson} />
+    } else {
+      return <LessonTabs lessons={''} selectLesson={this.selectLesson} />
+    }
+  }
+
+  renderTopics = () => {
+    if (this.state.selectedLesson !== '') {
+      return <TopicPills topics={this.state.selectedLesson[0].topics} selectTopic={this.selectTopic} addTopic={this.addTopic} />
+    } else {
+      return <TopicPills topics={''} selectTopic={this.selectTopic} />
+    }
   }
 
   render() {
@@ -49,16 +125,15 @@ export default class CourseEditor extends React.Component {
             <a href="" className="navbar-brand">
               <h5 className="m-0 d-none d-md-block">{this.state.title}</h5>
             </a>
-            <LessonTabs course={this.state.course} selectLesson={this.selectLesson} />
+            {this.renderLessons()}
           </div>
         </nav>
 
         <nav className="container-fluid row">
-          <ModuleList />
-
+          {this.renderModules()}
           <div className="col-9">
             <div className="row">
-              <TopicPills />
+              {this.renderTopics()}
             </div>
             <WidgetList />
           </div>
