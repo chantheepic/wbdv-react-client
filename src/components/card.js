@@ -1,6 +1,7 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import CloseIcon from '@material-ui/icons/Close'
+import EditIcon from '@material-ui/icons/Edit'
 
 const overflow = {
   whiteSpace: 'nowrap',
@@ -21,6 +22,7 @@ export default class Card extends React.Component {
                 {this.props.title}</Link>
             </div>
             <div className="row justify-content-end">
+              <Link to={`/courseeditor/?id=${this.props.id}`} className="btn px-0 mx-2 py-0"><EditIcon /></Link>
               <Link to="/courselist" className="btn px-0 mx-2 py-0" onClick={this.props.removeCourse.bind(this, this.props.id)}><CloseIcon /></Link>
             </div>
           </div>

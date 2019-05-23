@@ -1,7 +1,7 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
-import DocIcon from '@material-ui/icons/Description'
 import CloseIcon from '@material-ui/icons/Close'
+import EditIcon from '@material-ui/icons/Edit'
 
 const overflow = {
   whiteSpace: 'nowrap',
@@ -16,8 +16,8 @@ export default class ListItem extends React.Component {
         <ul className="row list-unstyled">
           <li className="list-item col-lg-5 col-10">
             <div className="row">
-              <div className="mr-3"><DocIcon /></div>
-              <Link to= {`/courseeditor/?id=${this.props.id}`} className="btn col-10 p-0 text-left" style={overflow}>{this.props.title}</Link>
+              <Link to={`/courseeditor/?id=${this.props.id}`} className="mr-3 text-dark"><EditIcon /></Link>
+              <Link to={`/courseeditor/?id=${this.props.id}`} className="btn col-10 p-0 text-left" style={overflow}>{this.props.title}</Link>
             </div>
           </li>
           <li className="list-item col-lg-3 d-none d-lg-block">me</li>
