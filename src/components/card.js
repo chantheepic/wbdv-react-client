@@ -23,7 +23,7 @@ export default class Card extends React.Component {
             </div>
             <div className="row justify-content-end">
               <Link to={`/courseeditor/?id=${this.props.id}`} className="btn px-0 mx-2 py-0"><EditIcon /></Link>
-              <Link to="/courselist" className="btn px-0 mx-2 py-0" onClick={this.props.removeCourse.bind(this, this.props.id)}><CloseIcon /></Link>
+              <Link to="/courselist/grid" className="btn px-0 mx-2 py-0" onClick={this.props.removeCourse.bind(this, this.props.id)}><CloseIcon /></Link>
             </div>
           </div>
         </div>

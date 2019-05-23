@@ -58,5 +58,3 @@ export default class Whiteboard extends React.Component {
       </Router>)
   }
 }
-
-// this.courseService.findCourseById(this.courseId)
