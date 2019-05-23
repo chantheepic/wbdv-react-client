@@ -60,24 +60,18 @@ export default class CourseEditor extends React.Component {
     let d = this.state.course;
     d[0].modules.push({ id: uuid.v4(), title: 'Untitled Module', lessons: [] })
     this.setState({ course: d });
-    // let courseService = CourseService.getInstance();
-    // console.log(courseService.findAllCourses())
   }
 
   addLesson = () => {
     let d = this.state.selectedModule;
     d[0].lessons.push({ id: uuid.v4(), title: 'Untitled Lesson', topics: [] })
     this.setState({ selectedModule: d });
-    // let courseService = CourseService.getInstance();
-    // console.log(courseService.findAllCourses())
   }
 
   addTopic = () => {
     let d = this.state.selectedLesson;
     d[0].topics.push({ id: uuid.v4(), title: 'Untitled Topic', topics: [] })
     this.setState({ selectedLesson: d });
-    // let courseService = CourseService.getInstance();
-    // console.log(courseService.findAllCourses())
   }
 
   removeModule = () => {
@@ -140,6 +134,14 @@ export default class CourseEditor extends React.Component {
     }
   }
 
+  updateCourse = (title) => {
+    if (this.state.course !== '') {
+      let d = this.state.course;
+      d[0].title = title;
+      this.setState({ course: d });
+    }
+  }
+
   renderModules = () => {
     if (this.state.course !== '') {
       return <ModuleList
@@ -194,9 +196,8 @@ export default class CourseEditor extends React.Component {
         <nav className="navbar navbar-dark bg-dark">
           <div className="container-fluid justify-content-start">
             <Link to="/courselist" className="p-0 mr-3 btn text-white"><CloseIcon /></Link>
-            <Link to="/courselist" className="text-white btn">
-              <h5 className="m-0 d-none d-md-block">{this.state.title}</h5>
-            </Link>
+            <input className="form-control rounded-0 bg-dark col-1 text-white" placeholder="Course Name" value={this.state.title} onChange={(e) => this.setState({ title: e.target.value })}></input>
+            <button className="btn text-white" onClick={this.updateCourse.bind(this, this.state.title)}>Update</button>
             {this.renderLessons()}
           </div>
         </nav>

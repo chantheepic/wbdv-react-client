@@ -2,7 +2,6 @@ import React from 'react'
 import LessonTab from './lessonTab'
 import AddIcon from '@material-ui/icons/Add'
 import CloseIcon from '@material-ui/icons/Close'
-import UpdateIcon from '@material-ui/icons/Done'
 
 export default class LessonTabs extends React.Component {
   constructor() {
@@ -32,10 +31,10 @@ export default class LessonTabs extends React.Component {
           <button className="nav-link rounded-0 text-white btn px-2" onClick={this.props.removeLesson}><CloseIcon /></button>
         </li>
         <li>
-          <input type="text" className="form-control px-2 rounded-0 bg-dark" placeholder="Lesson Name" value={this.state.title} onChange={(e) => this.setState({ title: e.target.value })} />
+          <input type="text" className="form-control px-2 rounded-0 bg-dark text-white" placeholder="Lesson Name" value={this.state.title} onChange={(e) => this.setState({ title: e.target.value })} />
         </li>
         <li className="nav-item">
-          <button className="btn text-white px-2" onClick={this.props.updateLesson.bind(this, this.state.title)}><UpdateIcon /></button>
+          <button className="btn text-white px-2" onClick={this.props.updateLesson.bind(this, this.state.title)}>Update</button>
         </li>
       </ul>
     )

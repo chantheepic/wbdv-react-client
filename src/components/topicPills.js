@@ -2,7 +2,6 @@ import React from 'react'
 import TopicPill from './topicPill'
 import AddIcon from '@material-ui/icons/Add'
 import CloseIcon from '@material-ui/icons/Close'
-import UpdateIcon from '@material-ui/icons/Done'
 
 export default class TopicPills extends React.Component {
   constructor() {
@@ -35,7 +34,7 @@ export default class TopicPills extends React.Component {
           <input type="text" className="m-2 p-2 form-control rounded-0" placeholder="Topic Name" value={this.state.title} onChange={(e) => this.setState({ title: e.target.value })} />
         </li>
         <li className="nav-item">
-          <button className="m-1 p-2 bg-secondary text-white rounded-0 btn" onClick={this.props.updateTopic.bind(this, this.state.title)}><UpdateIcon /></button>
+          <button className="m-1 p-2 bg-secondary text-white rounded-0 btn" onClick={this.props.updateTopic.bind(this, this.state.title)}>Update</button>
         </li>
       </ul>
     )
