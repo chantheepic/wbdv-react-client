@@ -22,7 +22,7 @@ export default class TopicPills extends React.Component {
 
   render() {
     return (
-      <ul class="nav nav-pills">
+      <ul className="nav nav-pills">
         {this.renderTopics()}
         <li className="nav-item">
           <button className="m-1 p-2 bg-secondary text-white rounded-0 btn" onClick={this.props.addTopic}><AddIcon /></button>
