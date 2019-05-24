@@ -1,13 +1,13 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
-import ListItem from './listItem'
+import CourseRow from './courseRow'
 import GridIcon from '@material-ui/icons/ViewModule'
 import SortIcon from '@material-ui/icons/SortByAlpha'
 
-export default class CourseList extends React.Component {
+export default class CourseTable extends React.Component {
   renderListOfCourses = () => {
     let courses = this.props.courses.map((courses) => {
-        return <ListItem title={courses.title} id={courses.id} removeCourse={this.props.removeCourse}/>
+        return <CourseRow title={courses.title} id={courses.id} removeCourse={this.props.removeCourse}/>
       });
     return courses;
   }

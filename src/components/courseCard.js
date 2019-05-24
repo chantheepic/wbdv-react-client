@@ -9,7 +9,7 @@ const overflow = {
   textOverflow: 'ellipses'
 };
 
-export default class Card extends React.Component {
+export default class CourseCard extends React.Component {
   render() {
     return (
       <div className="col-12 col-sm-6 col-md-4 col-lg-2 p-0">

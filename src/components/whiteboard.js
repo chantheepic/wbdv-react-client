@@ -2,7 +2,7 @@ import React from 'react'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import MenuIcon from '@material-ui/icons/Menu'
 import CourseGrid from './courseGrid'
-import CourseList from './courseList'
+import CourseTable from './courseTable'
 import CourseService from './courseService'
 import CourseEditor from './courseEditor'
 import uuid from 'uuid'
@@ -52,7 +52,7 @@ export default class Whiteboard extends React.Component {
           <CourseGrid courses={this.state.courses} removeCourse={this.removeCourse} />
         )} />
         <Route exact path="/courselist" render={props => (
-          <CourseList courses={this.state.courses} removeCourse={this.removeCourse} />
+          <CourseTable courses={this.state.courses} removeCourse={this.removeCourse} />
         )} />
         <Route path="/courseeditor" component={CourseEditor} />
       </Router>)
