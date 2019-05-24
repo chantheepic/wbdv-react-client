@@ -70,7 +70,7 @@ export default class CourseEditor extends React.Component {
 
   addTopic = () => {
     let d = this.state.selectedLesson;
-    d[0].topics.push({ id: uuid.v4(), title: 'Untitled Topic', topics: [] })
+    d[0].topics.push({ id: uuid.v4(), title: 'Untitled Topic', widgets: [] })
     this.setState({ selectedLesson: d });
   }
 
@@ -149,7 +149,8 @@ export default class CourseEditor extends React.Component {
         selectModule={this.selectModule}
         removeModule={this.removeModule}
         addModule={this.addModule}
-        updateModule={this.updateModule} />
+        updateModule={this.updateModule}
+        selectedModule={this.state.selectedModule} />
     } else {
       return <ModuleList modules={''} updateModule={this.updateModule} />
     }
@@ -162,7 +163,8 @@ export default class CourseEditor extends React.Component {
         selectLesson={this.selectLesson}
         removeLesson={this.removeLesson}
         addLesson={this.addLesson}
-        updateLesson={this.updateLesson} />
+        updateLesson={this.updateLesson}
+        selectedLesson={this.state.selectedLesson} />
     } else {
       return <LessonTabs lessons={''} updateLesson={this.updateLesson} />
     }
@@ -175,7 +177,8 @@ export default class CourseEditor extends React.Component {
         selectTopic={this.selectTopic}
         removeTopic={this.removeTopic}
         addTopic={this.addTopic}
-        updateTopic={this.updateTopic} />
+        updateTopic={this.updateTopic}
+        selectedTopic={this.state.selectedTopic} />
     } else {
       return <TopicPills topics={''} updateTopic={this.updateTopic} />
     }

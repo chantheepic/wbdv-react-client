@@ -15,19 +15,19 @@ export default class CourseList extends React.Component {
   render() {
     return (
       <div>
-        <nav className="bg-light d-none d-lg-block">
+        <nav className="bg-light">
           <div className="container">
-            <ul className="row list-group list-group-horizontal-lg list-unstyled">
-              <li className="list-item col-lg-5">
+            <ul className="row list-group list-group-horizontal-sm list-unstyled">
+              <li className="list-item col-lg-5 col-sm-8 d-none d-sm-block">
                 <a className="btn" href="#" role="button">Title</a>
               </li>
-              <li className="list-item col-lg-3">
+              <li className="list-item col-lg-3 d-none d-lg-block">
                 <a className="btn" href="#" role="button">Owned By</a>
               </li>
-              <li className="list-item col-lg-3">
+              <li className="list-item col-lg-3 d-none d-lg-block">
                 <a className="btn" href="#" role="button">Last Modified By</a>
               </li>
-              <li className="list-item col-lg-1">
+              <li className="list-item col-lg-1 col-sm-4">
                 <div className="row">
                   <Link to="/courselist/grid" className="btn col-6 px-0" href="#" role="button"><GridIcon /></Link>
                   <a className="btn col-6 px-0" href="#" role="button"><SortIcon /></a>

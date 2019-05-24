@@ -15,16 +15,16 @@ export default class CourseGrid extends React.Component {
   render() {
     return (
       <div>
-        <nav className="bg-light d-none d-lg-block">
+        <nav className="bg-light">
           <div className="container">
-            <ul className="row list-group list-group-horizontal-lg list-unstyled">
-              <li className="list-item col-lg-6">
+            <ul className="row list-group list-group-horizontal-sm list-unstyled">
+              <li className="list-item col-lg-6 col-8 d-none d-sm-block">
                 <a className="btn" href="#" role="button">Recent Documents</a>
               </li>
-              <li className="list-item col-lg-5">
+              <li className="list-item col-lg-5 d-none d-lg-block">
                 <a className="btn" href="#" role="button">Owned By me</a>
               </li>
-              <li className="list-item col-lg-1">
+              <li className="list-item col-lg-1 col-sm-4 col-12">
                 <div className="row">
                   <Link to="/courselist" className="btn col-6 px-0" href="#" role="button"><ListIcon /></Link>
                   <a className="btn col-6 px-0" href="#" role="button"><SortIcon /></a>
