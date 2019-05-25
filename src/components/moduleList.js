@@ -30,7 +30,6 @@ export default class ModuleList extends React.Component {
     return (
       <ul className="list-group col-3 bg-dark" style={fullHeight}>
         <hr className="my-2" />
-        {this.renderModules()}
         <li className="list-group-item m-1 rounded bg-dark text-white p-2 border-0">
           <div className="input-group">
             <button className="btn text-white" onClick={this.props.addModule}><AddIcon /></button>
@@ -39,6 +38,7 @@ export default class ModuleList extends React.Component {
             <button className="btn text-white" onClick={this.props.updateModule.bind(this, this.state.title)}>Update</button>
           </div>
         </li>
+        {this.renderModules()}
       </ul>
     )
   }

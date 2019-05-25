@@ -1,6 +1,6 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
-import CourseService from './courseService'
+import CourseService from '../services/courseService'
 import ModuleList from './moduleList'
 import TopicPills from './topicPills'
 import LessonTabs from './lessonTabs'

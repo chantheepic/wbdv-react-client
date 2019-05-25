@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import MenuIcon from '@material-ui/icons/Menu'
 import CourseGrid from './courseGrid'
 import CourseTable from './courseTable'
-import CourseService from './courseService'
+import CourseService from '../services/courseService'
 import CourseEditor from './courseEditor'
 import uuid from 'uuid'
 
