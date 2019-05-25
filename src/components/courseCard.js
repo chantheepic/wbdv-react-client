@@ -11,7 +11,7 @@ const overflow = {
 
 export default class CourseCard extends React.Component {
   render() {
-    return (
+    return (  
       <div className="col-12 col-sm-6 col-md-4 col-lg-2 p-0">
         <div className="card m-2 rounded-0">
           <img className="card-img-top rounded-0"

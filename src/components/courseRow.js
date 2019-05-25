@@ -9,7 +9,7 @@ const overflow = {
   textOverflow: 'ellipses'
 };
 
-export default class ListItem extends React.Component {
+export default class CourseRow extends React.Component {
   render() {
     return (
       <li className="list-group-item rounded-0">

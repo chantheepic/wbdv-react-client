@@ -7,21 +7,19 @@ export default class TopicPills extends React.Component {
   constructor() {
     super();
     this.state = {
-      title: '',
-      placeholder: ''
+      title: ''
     };
   }
 
   renderTopics = () => {
     if (this.props.topics !== '') {
       let topics = this.props.topics.map((topic) => {
-        return <TopicPill title={topic.title} id={topic.id} selectTopic={this.props.selectTopic} />
+        if (this.props.selectedTopic !== '' && this.props.selectedTopic[0].id === topic.id) {
+          return <TopicPill title={topic.title} id={topic.id} selectTopic={this.props.selectTopic} active='active'/>
+        } else {
+          return <TopicPill title={topic.title} id={topic.id} selectTopic={this.props.selectTopic} active=''/>
+        }
       });
-      if (this.props.selectedTopic !== '') {
-        this.state.placeholder = this.props.selectedTopic[0].title
-      } else {
-        this.state.placeholder = 'Topic Name'
-      }
       return topics;
     }
   }
