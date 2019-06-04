@@ -1,3 +1,4 @@
+Class and widget management tool that is connected to wbdv-java-server. Currently has limited connectivity (widgets only)  
 https://wbdv-chanmin-park-client-react.herokuapp.com/courselist
 
 
